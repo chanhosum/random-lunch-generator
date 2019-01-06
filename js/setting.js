@@ -2,7 +2,7 @@ $(document).ready(function(){
     function getFullList(){
         $.ajax({
             type: "GET",
-            url: "http://localhost:8099/getFullList/true",
+            url: "https://random-lunch-list.herokuapp.com/getFullList/true",
             dataType: "json",
             success: function(data) {
                 fullListLength = data.length;
@@ -24,7 +24,7 @@ $(document).ready(function(){
             });
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8099/delete",
+                url: "https://random-lunch-list.herokuapp.com/delete",
                 contentType: 'application/json',
                 data: JSON.stringify(deleteArray),
                 success: function(data) {
@@ -37,7 +37,7 @@ $(document).ready(function(){
         var addText = $("#addText").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost:8099/add",
+            url: "https://random-lunch-list.herokuapp.com/add",
             contentType: 'application/json',
             data: JSON.stringify({text:addText}),
             success: function(data) {
