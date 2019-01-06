@@ -12,6 +12,8 @@
 <body>
     <div class="myContainer">
         <button class="ui-button ui-widget ui-corner-all" id="save">儲存</button>
+        <button class="ui-button ui-widget ui-corner-all" id="reset">重設</button>
+        <a href="setting.html"><button class="ui-button ui-widget ui-corner-all">設定</button></a>
         <div class="innerContainer">
             <div class="notEatenContainer">
                 <p>未食</p>
@@ -21,6 +23,12 @@
 
             <div class="banContainer">
                 <div class="ban">
+                </div>
+                <div class="pick">
+                    <button class="ui-button ui-widget ui-corner-all" id="pick">抽</button>
+                </div>
+                <div class="result">
+
                 </div>
             </div>
 
@@ -34,5 +42,6 @@
     <div class="loader" style="display: none">
         <img src="image/loader.gif"/>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </body>
 </html>
