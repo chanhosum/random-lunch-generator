@@ -86,7 +86,8 @@ $(document).ready(function(){
         }
     });
     function randomPickTemplate(item){
-        var x = Math.floor((Math.random() * 4) + 1);
+        var x = Math.floor((Math.random() * 16) + 1);
+        x = 16;
         switch (x) {
             case 1:
                 $(".result").empty();
@@ -250,9 +251,433 @@ $(document).ready(function(){
                     "  <span class=\"text-wrapper\">\n" +
                     "    <span class=\"line line1\"></span>\n" +
                     "    <span class=\"letters letters-left\">"+item+"</span>\n" +
+                    "<span class=\"line line2\"></span>" +
                     "  </span>\n" +
                     "</h1>");
                 $(".result").show();
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml5 .line',
+                        opacity: [0.5,1],
+                        scaleX: [0, 1],
+                        easing: "easeInOutExpo",
+                        duration: 700
+                    }).add({
+                    targets: '.ml5 .line',
+                    duration: 600,
+                    easing: "easeOutExpo",
+                    translateY: function(e, i, l) {
+                        var offset = -0.625 + 0.625*2*i;
+                        return offset + "em";
+                    }
+                }).add({
+                    targets: '.ml5 .ampersand',
+                    opacity: [0,1],
+                    scaleY: [0.5, 1],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=600'
+                }).add({
+                    targets: '.ml5 .letters-left',
+                    opacity: [0,1],
+                    translateX: ["0.5em", 0],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=300'
+                }).add({
+                    targets: '.ml5 .letters-right',
+                    opacity: [0,1],
+                    translateX: ["-0.5em", 0],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=600'
+                }).add({
+                    targets: '.ml5',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 6:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml6\">\n" +
+                    "  <span class=\"text-wrapper\">\n" +
+                    "    <span class=\"letters\">"+item+"</span>\n" +
+                    "  </span>\n" +
+                    "</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml6 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml6 .letter',
+                        translateY: ["1.1em", 0],
+                        translateZ: 0,
+                        duration: 750,
+                        delay: function(el, i) {
+                            return 50 * i;
+                        }
+                    }).add({
+                    targets: '.ml6',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 7:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml7\">\n" +
+                    "  <span class=\"text-wrapper\">\n" +
+                    "    <span class=\"letters\">"+item+"</span>\n" +
+                    "  </span>\n" +
+                    "</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml7 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml7 .letter',
+                        translateY: ["1.1em", 0],
+                        translateX: ["0.55em", 0],
+                        translateZ: 0,
+                        rotateZ: [180, 0],
+                        duration: 750,
+                        easing: "easeOutExpo",
+                        delay: function(el, i) {
+                            return 50 * i;
+                        }
+                    }).add({
+                    targets: '.ml7',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 8:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml8\">\n" +
+                    "  <span class=\"letters-container\">\n" +
+                    "    <span class=\"letters letters-left\">"+item+"</span>\n" +
+                    "    <span class=\"letters bang\">!</span>\n" +
+                    "  </span>\n" +
+                    "  <span class=\"circle circle-white\"></span>\n" +
+                    "  <span class=\"circle circle-dark\"></span>\n" +
+                    "  <span class=\"circle circle-container\"><span class=\"circle circle-dark-dashed\"></span></span>\n" +
+                    "</h1>");
+                $(".result").show();
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml8 .circle-white',
+                        scale: [0, 3],
+                        opacity: [1, 0],
+                        easing: "easeInOutExpo",
+                        rotateZ: 360,
+                        duration: 1100
+                    }).add({
+                    targets: '.ml8 .circle-container',
+                    scale: [0, 1],
+                    duration: 1100,
+                    easing: "easeInOutExpo",
+                    offset: '-=1000'
+                }).add({
+                    targets: '.ml8 .circle-dark',
+                    scale: [0, 1],
+                    duration: 1100,
+                    easing: "easeOutExpo",
+                    offset: '-=600'
+                }).add({
+                    targets: '.ml8 .letters-left',
+                    scale: [0, 1],
+                    duration: 1200,
+                    offset: '-=550'
+                }).add({
+                    targets: '.ml8 .bang',
+                    scale: [0, 1],
+                    rotateZ: [45, 15],
+                    duration: 1200,
+                    offset: '-=1000'
+                }).add({
+                    targets: '.ml8',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1400
+                });
+
+                anime({
+                    targets: '.ml8 .circle-dark-dashed',
+                    rotateZ: 360,
+                    duration: 8000,
+                    easing: "linear",
+                    loop: true
+                });
+                break;
+            case 9:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml9\">\n" +
+                    "  <span class=\"text-wrapper\">\n" +
+                    "    <span class=\"letters\">"+item+"</span>\n" +
+                    "  </span>\n" +
+                    "</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml9 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml9 .letter',
+                        scale: [0, 1],
+                        duration: 1500,
+                        elasticity: 600,
+                        delay: function(el, i) {
+                            return 45 * (i+1)
+                        }
+                    }).add({
+                    targets: '.ml9',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 10:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml10\">\n" +
+                    "  <span class=\"text-wrapper\">\n" +
+                    "    <span class=\"letters\">"+item+"</span>\n" +
+                    "  </span>\n" +
+                    "</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml10 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml10 .letter',
+                        rotateY: [-90, 0],
+                        duration: 1300,
+                        delay: function(el, i) {
+                            return 45 * i;
+                        }
+                    }).add({
+                    targets: '.ml10',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 11:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml11\">\n" +
+                    "  <span class=\"text-wrapper\">\n" +
+                    "    <span class=\"line line1\"></span>\n" +
+                    "    <span class=\"letters\">"+item+"</span>\n" +
+                    "  </span>\n" +
+                    "</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml11 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml11 .line',
+                        scaleY: [0,1],
+                        opacity: [0.5,1],
+                        easing: "easeOutExpo",
+                        duration: 700
+                    })
+                    .add({
+                        targets: '.ml11 .line',
+                        translateX: [0,$(".ml11 .letters").width()],
+                        easing: "easeOutExpo",
+                        duration: 700,
+                        delay: 100
+                    }).add({
+                    targets: '.ml11 .letter',
+                    opacity: [0,1],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=775',
+                    delay: function(el, i) {
+                        return 34 * (i+1)
+                    }
+                }).add({
+                    targets: '.ml11',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 12:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml12\">"+item+"</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml12').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml12 .letter',
+                        translateX: [40,0],
+                        translateZ: 0,
+                        opacity: [0,1],
+                        easing: "easeOutExpo",
+                        duration: 1200,
+                        delay: function(el, i) {
+                            return 500 + 30 * i;
+                        }
+                    }).add({
+                    targets: '.ml12 .letter',
+                    translateX: [0,-30],
+                    opacity: [1,0],
+                    easing: "easeInExpo",
+                    duration: 1100,
+                    delay: function(el, i) {
+                        return 100 + 30 * i;
+                    }
+                });
+                break;
+            case 13:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml13\">"+item+"</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml13').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml13 .letter',
+                        translateY: [100,0],
+                        translateZ: 0,
+                        opacity: [0,1],
+                        easing: "easeOutExpo",
+                        duration: 1400,
+                        delay: function(el, i) {
+                            return 300 + 30 * i;
+                        }
+                    }).add({
+                    targets: '.ml13 .letter',
+                    translateY: [0,-100],
+                    opacity: [1,0],
+                    easing: "easeInExpo",
+                    duration: 1200,
+                    delay: function(el, i) {
+                        return 100 + 30 * i;
+                    }
+                });
+                break;
+            case 14:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml14\">\n" +
+                    "  <span class=\"text-wrapper\">\n" +
+                    "    <span class=\"letters\">"+item+"</span>\n" +
+                    "    <span class=\"line\"></span>\n" +
+                    "  </span>\n" +
+                    "</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml14 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml14 .line',
+                        scaleX: [0,1],
+                        opacity: [0.5,1],
+                        easing: "easeInOutExpo",
+                        duration: 900
+                    }).add({
+                    targets: '.ml14 .letter',
+                    opacity: [0,1],
+                    translateX: [40,0],
+                    translateZ: 0,
+                    scaleX: [0.3, 1],
+                    easing: "easeOutExpo",
+                    duration: 800,
+                    offset: '-=600',
+                    delay: function(el, i) {
+                        return 150 + 25 * i;
+                    }
+                }).add({
+                    targets: '.ml14',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 15:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml15\">\n" +
+                    "  <span class=\"word\">"+item+"</span>\n" +
+                    "</h1>");
+                $(".result").show();
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml15 .word',
+                        scale: [14,1],
+                        opacity: [0,1],
+                        easing: "easeOutCirc",
+                        duration: 800,
+                        delay: function(el, i) {
+                            return 800 * i;
+                        }
+                    }).add({
+                    targets: '.ml15',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
+            case 16:
+                $(".result").empty();
+                $(".result").append("<h1 class=\"ml16\">"+item+"</h1>");
+                $(".result").show();
+                // Wrap every letter in a span
+                $('.ml16').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                anime.timeline({loop: true})
+                    .add({
+                        targets: '.ml16 .letter',
+                        translateY: [-100,0],
+                        easing: "easeOutExpo",
+                        duration: 1400,
+                        delay: function(el, i) {
+                            return 30 * i;
+                        }
+                    }).add({
+                    targets: '.ml16',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+                break;
         }
     }
     $("#pick").on("click",function (event) {
