@@ -87,7 +87,6 @@ $(document).ready(function(){
     });
     function randomPickTemplate(item){
         var x = Math.floor((Math.random() * 16) + 1);
-        x = 16;
         switch (x) {
             case 1:
                 $(".result").empty();
