@@ -1,0 +1,25 @@
+.connectedSortable {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+}
+.connectedSortable li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+}
+.banList{
+    display: inline-block;
+    position: relative;
+}
+.myContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1170px;
+}
