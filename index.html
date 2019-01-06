@@ -11,26 +11,28 @@
 </head>
 <body>
     <div class="myContainer">
-        <ul id="notPickedList" class="connectedSortable">
-        </ul>
+        <button class="ui-button ui-widget ui-corner-all" id="save">儲存</button>
+        <div class="innerContainer">
+            <div class="notEatenContainer">
+                <p>未食</p>
+                <ul id="notPickedList" class="connectedSortable">
+                </ul>
+            </div>
 
-        <div class="banList">
-            <p>Ben</p>
-            <ul id="benList" class="connectedSortable">
-            </ul>
-        </div>
+            <div class="banContainer">
+                <div class="ban">
+                </div>
+            </div>
 
-        <div class="banList">
-            <p>Lok</p>
-            <ul id="lokList" class="connectedSortable">
-            </ul>
+            <div class="eatenContainer">
+                <p>已食</p>
+                <ul id="pickedList" class="connectedSortable">
+                </ul>
+            </div>
         </div>
-
-        <div class="banList">
-            <p>Anson</p>
-            <ul id="ansonList" class="connectedSortable">
-            </ul>
-        </div>
+    </div>
+    <div class="loader" style="display: none">
+        <img src="image/loader.gif"/>
     </div>
 </body>
 </html>
