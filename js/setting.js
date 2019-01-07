@@ -23,7 +23,7 @@ $(document).ready(function(){
     function getMemberList(){
         $.ajax({
             type: "GET",
-            url: "http://localhost:8099/getMemberList",
+            url: "https://random-lunch-list.herokuapp.com/getMemberList",
             dataType: "json",
             success: function(data) {
                 fullListLength = data.length;
@@ -46,7 +46,7 @@ $(document).ready(function(){
             });
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8099/delete",
+                url: "https://random-lunch-list.herokuapp.com/delete",
                 contentType: 'application/json',
                 data: JSON.stringify(deleteArray),
                 success: function(data) {
@@ -64,7 +64,7 @@ $(document).ready(function(){
             });
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8099/deleteMember",
+                url: "https://random-lunch-list.herokuapp.com/deleteMember",
                 contentType: 'application/json',
                 data: JSON.stringify(deleteArray),
                 success: function(data) {
@@ -89,7 +89,7 @@ $(document).ready(function(){
         var addText = $("#addMemberText").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost:8099/addMember",
+            url: "https://random-lunch-list.herokuapp.com/addMember",
             contentType: 'application/json',
             data: JSON.stringify({text:lowFirstLetter(addText)}),
             success: function(data) {

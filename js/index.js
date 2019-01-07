@@ -1,5 +1,6 @@
 var fullListLength = 0;
 var userList = [];
+var item = "";
 $(document).ready(function(){
 
     function capitalizeFirstLetter(string) {
@@ -55,6 +56,7 @@ $(document).ready(function(){
     $( "#save" ).on( "click", function( event) {
         $(".loader").show();
         var dbUpdateJSON = {
+            pickOk:null,
             fullListLength: fullListLength,
             notPicked: $( "#notPickedList" ).sortable( "toArray",{attribute: 'value'} ),
             picked: $( "#pickedList" ).sortable( "toArray",{attribute: 'value'} )
@@ -85,8 +87,30 @@ $(document).ready(function(){
             });
         }
     });
+    $( "#pickOk" ).on( "click", function( event) {
+        $(".loader").show();
+        var dbUpdateJSON = {
+            pickOk:item,
+            fullListLength: fullListLength,
+            notPicked: $( "#notPickedList" ).sortable( "toArray",{attribute: 'value'} ),
+            picked: $( "#pickedList" ).sortable( "toArray",{attribute: 'value'} )
+        }
+        for(var i in userList){
+            dbUpdateJSON[userList[i]] = $( "#"+userList[i]+"List" ).sortable( "toArray",{attribute: 'value'} );
+        }
+        console.log(dbUpdateJSON);
+        $.ajax({
+            type: "POST",
+            url: "https://random-lunch-list.herokuapp.com/updateFullList",
+            contentType: 'application/json',
+            data: JSON.stringify(dbUpdateJSON),
+            success: function(data) {
+                location.reload();
+            }
+        });
+    });
     function randomPickTemplate(item){
-        var x = Math.floor((Math.random() * 16) + 1);
+        var x = Math.floor((Math.random() * 15) + 1);
         switch (x) {
             case 1:
                 $(".result").empty();
@@ -361,6 +385,7 @@ $(document).ready(function(){
                     delay: 1000
                 });
                 break;
+                /*
             case 8:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml8\">\n" +
@@ -419,8 +444,8 @@ $(document).ready(function(){
                     easing: "linear",
                     loop: true
                 });
-                break;
-            case 9:
+                break;*/
+            case 8:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml9\">\n" +
                     "  <span class=\"text-wrapper\">\n" +
@@ -450,7 +475,7 @@ $(document).ready(function(){
                     delay: 1000
                 });
                 break;
-            case 10:
+            case 9:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml10\">\n" +
                     "  <span class=\"text-wrapper\">\n" +
@@ -479,7 +504,7 @@ $(document).ready(function(){
                     delay: 1000
                 });
                 break;
-            case 11:
+            case 10:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml11\">\n" +
                     "  <span class=\"text-wrapper\">\n" +
@@ -524,7 +549,7 @@ $(document).ready(function(){
                     delay: 1000
                 });
                 break;
-            case 12:
+            case 11:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml12\">"+item+"</h1>");
                 $(".result").show();
@@ -555,7 +580,7 @@ $(document).ready(function(){
                     }
                 });
                 break;
-            case 13:
+            case 12:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml13\">"+item+"</h1>");
                 $(".result").show();
@@ -586,7 +611,7 @@ $(document).ready(function(){
                     }
                 });
                 break;
-            case 14:
+            case 13:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml14\">\n" +
                     "  <span class=\"text-wrapper\">\n" +
@@ -627,7 +652,7 @@ $(document).ready(function(){
                     delay: 1000
                 });
                 break;
-            case 15:
+            case 14:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml15\">\n" +
                     "  <span class=\"word\">"+item+"</span>\n" +
@@ -651,7 +676,7 @@ $(document).ready(function(){
                     delay: 1000
                 });
                 break;
-            case 16:
+            case 15:
                 $(".result").empty();
                 $(".result").append("<h1 class=\"ml16\">"+item+"</h1>");
                 $(".result").show();
@@ -681,57 +706,9 @@ $(document).ready(function(){
     }
     $("#pick").on("click",function (event) {
         var randomArray = $( "#notPickedList" ).sortable( "toArray",{attribute: 'value'} );
-        var item = randomArray[Math.floor(Math.random()*randomArray.length)];
+        item = randomArray[Math.floor(Math.random()*randomArray.length)];
         randomPickTemplate(item);
+        $(".pickOk").show();
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    $('.ml2').each(function(){
-        $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
-    });
-
-    anime.timeline({loop: true})
-        .add({
-            targets: '.ml2 .letter',
-            scale: [4,1],
-            opacity: [0,1],
-            translateZ: 0,
-            easing: "easeOutExpo",
-            duration: 950,
-            delay: function(el, i) {
-                return 70*i;
-            }
-        }).add({
-        targets: '.ml2',
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
-    });
-
-
-
-
-
-
-
-
-
-
-
 
 });

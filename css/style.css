@@ -100,12 +100,32 @@
     height: 75px;
     font-size: 200%;
 }
+#pickOk{
+    background-color: #00c2ff;
+    color: white;
+    width: 150px;
+    height: 75px;
+    font-size: 200%;
+}
 .result{
     text-align: center;
     height: 150px;
 }
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
 
 
