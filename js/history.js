@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.ajax({
         type: "GET",
-        url: "https://random-lunch-list.herokuapp.com/getHistory",
+        url: "http://localhost:8099/getHistory",
         dataType: "json",
         success: function (data) {
             var html = "";

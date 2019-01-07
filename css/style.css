@@ -480,6 +480,9 @@ h1.ml8 {
     display: inline-block;
     line-height: 1em;
 }
-
+.topWord{
+    display: inline-block;
+    position: relative;
+}
 
 /**/
