@@ -1,6 +1,7 @@
 var fullListLength = 0;
 var userList = [];
 var item = "";
+var timeOut;
 $(document).ready(function(){
 
     function capitalizeFirstLetter(string) {
@@ -718,10 +719,16 @@ $(document).ready(function(){
         }
     }
     $("#pick").on("click",function (event) {
-        var randomArray = $( "#notPickedList" ).sortable( "toArray",{attribute: 'value'} );
-        item = randomArray[Math.floor(Math.random()*randomArray.length)];
-        randomPickTemplate(item);
-        $(".pickOk").show();
+        clearTimeout(timeOut);
+        $(".result").hide();
+        $(".pickOk").hide();
+        timeOut = setTimeout(function(){
+            var randomArray = $( "#notPickedList" ).sortable( "toArray",{attribute: 'value'} );
+            item = randomArray[Math.floor(Math.random()*randomArray.length)];
+            randomPickTemplate(item);
+            $(".result").show();
+            $(".pickOk").show();
+            }, 500);
     })
 
 });
