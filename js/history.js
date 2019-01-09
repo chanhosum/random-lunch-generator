@@ -29,4 +29,28 @@ $(document).ready(function(){
             });
         }
     });
+    $.ajax({
+        type: "GET",
+        url: "https://random-lunch-list.herokuapp.com/getFullList/true",
+        dataType: "json",
+        success: function(data) {
+            fullListLength = data.length;
+            for(var i in data) {
+                if(data[i].properties!="picked"){
+                    $("#table2").append("<tr><td><button class=\"ui-button ui-widget ui-corner-all eat\"' id='"+data[i].name+"'>"+data[i].name+"</button></td></tr>");
+                }
+            }
+            $( ".eat" ).on( "click", function( event) {
+                $.ajax({
+                    type: "POST",
+                    url: "https://random-lunch-list.herokuapp.com/eat",
+                    contentType: 'application/json',
+                    data: JSON.stringify({name:event.target.id}),
+                    success: function(data) {
+                        location.reload();
+                    }
+                });
+            });
+        }
+    });
 });

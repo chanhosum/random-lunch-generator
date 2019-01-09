@@ -115,6 +115,8 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
+    float: left;
+    margin-left: 30px;
 }
 
 td, th {
@@ -125,6 +127,9 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+#table2 button{
+    width: 130px;
 }
 
 
